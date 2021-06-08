@@ -18,12 +18,17 @@ cd ./hackathon-api
 docker-compose up -d
 ```
 
-5. Access application on
+5. Install composer dependencies
+```sh
+docker container exec -u 1000 laravel composer install
+```
+
+6. Access application on
 ```sh
 http://localhost:8085/
 ```
 
-6. Need drops your containers?
+7. Need drops your containers?
 ```sh
 docker-compose down
 ```
