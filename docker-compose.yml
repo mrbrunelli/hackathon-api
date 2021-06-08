@@ -1,6 +1,18 @@
 version: "3.2"
 
 services:
+  laravel:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: laravel
+    volumes:
+      - ./src:/var/www/html
+    ports:
+      - "8085:80"
+    links:
+      - mysql
+
   mysql:
     image: mysql:5.7
     container_name: mysql

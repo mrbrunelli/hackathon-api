@@ -1,6 +1,6 @@
 # docker build -t nome/laravel:{version} .
-# docker run -d --name aula3 -p 8082:80 -v ${PWD}:/var/www/html laravel
-# docker container exec -u 1000 aula3 bash -c "composer create-project --prefer-dist laravel/laravel ."
+# docker run -d --name laravel -p 8085:80 -v ${PWD}:/var/www/html --link mysql laravel
+# docker container exec -u 1000 laravel bash -c "composer create-project --prefer-dist laravel/laravel ."
 
 FROM php:7.4-apache
 
