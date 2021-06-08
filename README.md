@@ -22,3 +22,29 @@ docker-compose up -d
 ```sh
 http://localhost:8085/
 ```
+
+### How to execute migrations?
+1. Install migrations
+```sh
+docker container exec -it -u 1000 laravel php artisan migrate:install
+```
+
+2. Create new migration
+```sh
+docker container exec -u 1000 laravel php artisan make:migration create_nameoftable_table
+```
+
+3. Execute migrations
+```sh
+docker container exec -u 1000 laravel php artisan migrate
+```
+
+4. Create new seed
+```sh
+docker container exec -u 1000 laravel php artisan make:seeder NameOfSeed
+```
+
+5. Erase all tables and seed
+```sh
+docker container exec -u 1000 laravel php artisan migrate:fresh --seed
+```
