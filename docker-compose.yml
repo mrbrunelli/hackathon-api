@@ -1,0 +1,15 @@
+version: "3.2"
+
+services:
+  mysql:
+    image: mysql:5.7
+    container_name: mysql
+    restart: always
+    volumes:
+      - /var/lib/mysql
+    ports:
+      - 127.0.0.1:3306:3306
+    environment:
+      - MYSQL_DATABASE=hackathon
+      - MYSQL_USER=hackathon
+      - MYSQL_ROOT_PASSWORD=hackathon
