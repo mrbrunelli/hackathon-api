@@ -23,6 +23,11 @@ docker-compose up -d
 http://localhost:8085/
 ```
 
+6. Need drops your containers?
+```sh
+docker-compose down
+```
+
 ### How to execute migrations?
 1. Install migrations
 ```sh
