@@ -25,6 +25,7 @@ class CreateVehicleTable extends Migration
             $table->foreignId('color_id')->constrained('color');
             $table->foreignId('user_id')->constrained('user');
             $table->text('optionals');
+            $table->timestamps();
         });
     }
 

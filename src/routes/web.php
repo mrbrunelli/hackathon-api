@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\BrandsController;
+use App\Http\Controllers\ColorsController;
+use App\Http\Controllers\IndexController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +16,31 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/', function(){
     return view('welcome');
+});
+
+Route::prefix('/sistema')->group(function(){
+    Route::get('/', [IndexController::class, 'login'])->name('login');
+    Route::post('/login', [IndexController::class, 'auth'])->name('auth');
+
+    Route::group(['middleware'=> 'AuthCheck'], function(){
+        Route::get('/dashboard', [IndexController::class, 'index'])->name('dashboard');
+        Route::get('/logout', [IndexController::class, 'logout'])->name('logout');
+
+        Route::get('/colors',[ColorsController::class, 'index'])->name('colors');
+        Route::get('/colors/create',[ColorsController::class, 'create'])->name('colors.create');
+        Route::post('/colors/save',[ColorsController::class, 'store'])->name('colors.save');
+        Route::get('/colors/{id}/edit',[ColorsController::class, 'edit'])->name('colors.edit');
+        Route::put('/colors/{id}',[ColorsController::class, 'update'])->name('colors.update');
+        Route::delete('/colors/{id}/destroy',[ColorsController::class, 'destroy'])->name('colors.destroy');
+
+        Route::get('/brands',[BrandsController::class, 'index'])->name('brands');
+        Route::get('/brands/create',[BrandsController::class, 'create'])->name('brands.create');
+        Route::post('/brands/save',[BrandsController::class, 'store'])->name('brands.save');
+        Route::get('/brands/{id}/edit',[BrandsController::class, 'edit'])->name('brands.edit');
+        Route::put('/brands/{id}',[BrandsController::class, 'update'])->name('brands.update');
+        Route::delete('/brands/{id}/destroy',[BrandsController::class, 'destroy'])->name('brands.destroy');
+    
+    });
 });
