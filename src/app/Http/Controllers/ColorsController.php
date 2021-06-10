@@ -46,7 +46,7 @@ class ColorsController extends Controller
         $cor->save();
 
         
-        return redirect()->route('colors');
+        return redirect()->route('colors')->with('success', 'Cor cadastrada com sucesso');
     }
 
     /**
@@ -86,7 +86,7 @@ class ColorsController extends Controller
         $color->description = $request->description;
         $color->save();
 
-        return redirect()->route('colors');
+        return redirect()->route('colors')->with('success', 'Cor alterada com sucesso');
     }
 
     /**

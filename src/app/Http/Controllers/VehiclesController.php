@@ -17,8 +17,6 @@ class VehiclesController extends Controller
      */
     public function index()
     {
-
-
         $vehicles = Vehicle::all();
         
         return view('vehicle.index', [
@@ -63,10 +61,7 @@ class VehiclesController extends Controller
         Vehicle::create($vehicle);
 
         if ($request->hasFile('photo') && $request->file('photo')->isValid()) {
-            $upload = $request->photo->storeAs('vehicles', $nameFile);
-            // Se tiver funcionado o arquivo foi armazenado em storage/app/public/categories/nomedinamicoarquivo.extensao
-     
-            // Verifica se NÃO deu certo o upload (Redireciona de volta)
+            $upload = $request->photo->storeAs('/public/vehicles', $vehicle['photo']);
             if ( !$upload )
                 return redirect()
                             ->back()
@@ -74,7 +69,7 @@ class VehiclesController extends Controller
                             ->withInput();
      
         }
-        return view('vehicles.index');
+        return redirect()->route('vehicles')->with('error', 'Veículo cadastrado com sucesso');
     }
 
     /**
@@ -96,7 +91,13 @@ class VehiclesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $vehicle = Vehicle::findOrFail($id);
+
+        $brands = Brand::all();
+        $colors = Color::all();
+
+        return view('vehicle.edit', [ 'vehicle' => $vehicle, 'brands' => $brands, 'colors' => $colors]);
+
     }
 
     /**
@@ -108,7 +109,35 @@ class VehiclesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $vehicle = Vehicle::findOrFail($id);
+
+        $vehicle->model             = $request->model;
+        $vehicle->yearmodel        = $request->yearmodel;
+        $vehicle->yearmanufacture   = $request->yearmanufacture;
+        $vehicle->type              = $request->type;
+        $vehicle->price         = $request->price;
+        $vehicle->optionals         = $request->optionals;
+        $vehicle['user_id']         = $request->session()->get('LoggedUser');
+
+        if(!$request->hasFile('photo')){
+            $vehicle->save();
+            return redirect()->route('vehicles')->with('success', 'Veículo alterado com sucesso');;
+        }else {
+  
+            $name = uniqid(date('HisYmd'));
+            $extension = $request->photo->getClientOriginalExtension();
+            $nameFile = "{$name}.{$extension}";
+            $vehicle['photo'] = $nameFile;
+            $vehicle->save();
+            $upload = $request->photo->storeAs('/public/vehicles', $nameFile );
+            if ( !$upload )
+                return redirect()
+                            ->route('vehicles')
+                            ->with('error', 'Falha ao fazer upload');
+            else
+                return redirect()->route('vehicles')->with('success', 'Veículo alterado com sucesso');
+
+        }
     }
 
     /**
@@ -119,6 +148,9 @@ class VehiclesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $vehicle = Vehicle::findOrFail($id);
+        $vehicle->delete();
+
+        return redirect()->route('vehicles');
     }
 }

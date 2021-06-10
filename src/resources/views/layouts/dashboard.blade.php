@@ -19,8 +19,6 @@
                                 <tr>
                                     <th class="border-bottom" scope="col">Cadastro</th>
                                     <th class="border-bottom" scope="col">Registros</th>
-                                    <th class="border-bottom" scope="col">Ativos</th>
-                                    <th class="border-bottom" scope="col">Inativos</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -29,13 +27,7 @@
                                         Cores
                                     </th>
                                     <td class="fw-bolder text-gray-500">
-                                        3,225
-                                    </td>
-                                    <td class="fw-bolder text-gray-500">
-
-                                    </td>
-                                    <td class="fw-bolder text-gray-500">
-
+                                        {{ $colors->count() }}
                                     </td>
                                 </tr>
                                 <tr>
@@ -43,13 +35,7 @@
                                         Marcas
                                     </th>
                                     <td class="fw-bolder text-gray-500">
-                                        2,987
-                                    </td>
-                                    <td class="fw-bolder text-gray-500">
-
-                                    </td>
-                                    <td class="fw-bolder text-gray-500">
-
+                                    {{ $brands->count() }}
                                     </td>
                                 </tr>
                                 <tr>
@@ -57,13 +43,7 @@
                                         Veículos
                                     </th>
                                     <td class="fw-bolder text-gray-500">
-                                        2,844
-                                    </td>
-                                    <td class="fw-bolder text-gray-500">
-
-                                    </td>
-                                    <td class="fw-bolder text-gray-500">
-
+                                    {{ $vehicles->count() }}
                                     </td>
                                 </tr>
                                 </tbody>

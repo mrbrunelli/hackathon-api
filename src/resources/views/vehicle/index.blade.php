@@ -34,10 +34,10 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @forelse($vehicles as $vehicle)
+                                @forelse( $vehicles as $vehicle)
                                 <tr>
                                     <th class="text-gray-900" scope="row">
-                                      <img src="{{ url('vehicles/ $vehicle->photo')}}" width="80" height="50">
+                                      <img src="{{ url('storage/vehicles/'.$vehicle->photo)}}" width="200" >
                                     </th>
                                     <th class="text-gray-900" scope="row">
                                        {{ $vehicle->id }}
@@ -81,4 +81,5 @@
             </div>
         </div>
     </div>
+@include('layouts.notifications')
 @endsection

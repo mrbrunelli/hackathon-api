@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Brand;
+use App\Models\Color;
 use App\Models\User;
+use App\Models\Vehicle;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -26,6 +29,7 @@ class IndexController extends Controller
         }else{
             if(Hash::check($request->password, $userInfo->password)){
                 $request->session()->put('LoggedUser', $userInfo->id);
+                $request->session()->put('LoggedUserName', $userInfo->name);
 
                 return redirect()->route('dashboard');
             }else{
@@ -35,7 +39,11 @@ class IndexController extends Controller
     }
 
     function index(){
-        return view('layouts.dashboard');
+        $colors = Color::all();
+        $brands = Brand::all();
+        $vehicles= Vehicle::all();
+
+        return view('layouts.dashboard', [ 'colors' => $colors , 'brands' => $brands, 'vehicles' => $vehicles]);
     }
 
     function logout(){

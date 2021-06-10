@@ -47,7 +47,7 @@ class BrandsController extends Controller
         $brand->save();
 
         
-        return redirect()->route('brands');
+        return redirect()->route('brands')->with('success', 'Marca cadastrada com sucesso');;
     }
 
     /**
@@ -88,7 +88,7 @@ class BrandsController extends Controller
         $brand->description = $request->description;
         $brand->save();
 
-        return redirect()->route('brands');
+        return redirect()->route('brands')->with('success', 'Marca alterada com sucesso');;
     }
 
     /**
