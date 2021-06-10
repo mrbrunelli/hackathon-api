@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class IndexController extends Controller
@@ -25,6 +26,7 @@ class IndexController extends Controller
         }else{
             if(Hash::check($request->password, $userInfo->password)){
                 $request->session()->put('LoggedUser', $userInfo->id);
+
                 return redirect()->route('dashboard');
             }else{
                 return back()->with('fail', 'Usuário incorreto. Verifique');

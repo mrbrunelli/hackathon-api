@@ -3,6 +3,7 @@
 use App\Http\Controllers\BrandsController;
 use App\Http\Controllers\ColorsController;
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\VehiclesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -42,5 +43,16 @@ Route::prefix('/sistema')->group(function(){
         Route::put('/brands/{id}',[BrandsController::class, 'update'])->name('brands.update');
         Route::delete('/brands/{id}/destroy',[BrandsController::class, 'destroy'])->name('brands.destroy');
     
+        Route::get('/vehicles',[VehiclesController::class, 'index'])->name('vehicles');
+        Route::get('/vehicles/create',[VehiclesController::class, 'create'])->name('vehicles.create');
+        Route::post('/vehicles/save',[VehiclesController::class, 'store'])->name('vehicles.save');
+        Route::get('/vehicles/{id}/edit',[VehiclesController::class, 'edit'])->name('vehicles.edit');
+        Route::put('/vehicles/{id}',[VehiclesController::class, 'update'])->name('vehicles.update');
+        Route::delete('/vehicles/{id}/destroy',[VehiclesController::class, 'destroy'])->name('vehicles.destroy');
     });
 });
+
+Route::get('/api',  function(){
+    return response()->json(\App\Models\Vehicle::all());
+    });
+    

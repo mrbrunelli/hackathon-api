@@ -105,7 +105,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a href="" class="nav-link d-flex justify-content-between">
+        <a href="{{ route('vehicles') }}" class="nav-link d-flex justify-content-between">
           <span>
             <span class="sidebar-icon">
             <img src="{{ asset('assets_dash/img/brand/light.svg') }}" height="20" width="20" alt="Volt Logo">
@@ -159,7 +159,7 @@
           
 
         </main>
-
+@yield('js')
     <!-- Core -->
 <script src="{{ asset('assets_dash/vendor/@popperjs/core/dist/umd/popper.min.js') }}"></script>
 <script src="{{ asset('assets_dash/vendor/bootstrap/dist/js/bootstrap.min.js') }}"></script>
