@@ -49,7 +49,7 @@
                                     {{ ( $vehicle->type == 'new' ) ? "Novo" : "Usado"}}
                                     </td>
                                     <td class="fw-bolder text-gray-500">
-                                    {{ $vehicle->price }}
+                                    {{ number_format($vehicle->price,2,",",".") }}
                                     </td>
                                     <td class="fw-bolder text-gray-500" >
                                     <div class="d-grid gap-2 d-md-flex justify-content">

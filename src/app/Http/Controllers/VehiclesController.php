@@ -54,8 +54,9 @@ class VehiclesController extends Controller
         $extension = $request->photo->getClientOriginalExtension();
         $nameFile = "{$name}.{$extension}";
 
-
         $vehicle = $request->all();
+        $valor = str_replace('.',"",$request->price);
+        $vehicle['price'] = str_replace(',',".",$valor);
         $vehicle['photo'] = $nameFile;
         $vehicle['user_id'] = $request->session()->get('LoggedUser');
         Vehicle::create($vehicle);
@@ -69,7 +70,7 @@ class VehiclesController extends Controller
                             ->withInput();
      
         }
-        return redirect()->route('vehicles')->with('error', 'Veículo cadastrado com sucesso');
+        return redirect()->route('vehicles')->with('success', 'Veículo cadastrado com sucesso');
     }
 
     /**
@@ -115,7 +116,8 @@ class VehiclesController extends Controller
         $vehicle->yearmodel        = $request->yearmodel;
         $vehicle->yearmanufacture   = $request->yearmanufacture;
         $vehicle->type              = $request->type;
-        $vehicle->price         = $request->price;
+        $valor = str_replace('.',"",$request->price);
+        $vehicle->price             =  str_replace(',',".",$valor);
         $vehicle->optionals         = $request->optionals;
         $vehicle['user_id']         = $request->session()->get('LoggedUser');
 

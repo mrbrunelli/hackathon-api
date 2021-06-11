@@ -41,7 +41,7 @@
             </div>
             <div class="col">
                 <label for="price">Preço</label>
-                <input type="text" class="form-control" id="price" name="price" onkeyup="formatarMoeda()" value="{{ $vehicle->price}}" >
+                <input type="text" class="form-control" id="price" name="price" onkeyup="formatarMoeda()" value="{{number_format($vehicle->price,2,',','.')}}" >
             </div>
             <div class="col">
                 <label for="brand_id">Marca</label>
