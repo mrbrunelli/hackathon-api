@@ -46,7 +46,7 @@
                                     {{ $vehicle->model }} / {{ $vehicle->yearmodel }}
                                     </td>
                                     <td class="fw-bolder text-gray-500">
-                                    {{ $vehicle->type }}
+                                    {{ ( $vehicle->type == 'new' ) ? "Novo" : "Usado"}}
                                     </td>
                                     <td class="fw-bolder text-gray-500">
                                     {{ $vehicle->price }}

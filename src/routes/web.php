@@ -4,6 +4,8 @@ use App\Http\Controllers\BrandsController;
 use App\Http\Controllers\ColorsController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\VehiclesController;
+use App\Models\Vehicle;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -53,6 +55,27 @@ Route::prefix('/sistema')->group(function(){
 });
 
 Route::get('/api',  function(){
-    return response()->json(\App\Models\Vehicle::all());
+
+    $vehicles = DB::table('vehicle')->join('brand', 'brand_id', '=', 'vehicle.brand_id')
+                                    ->join('color', 'color_id', '=', 'vehicle.color_id')
+                                    ->select('vehicle.*','brand.description as brand','color.description as color')
+                                    ->whereNull('vehicle.deleted_at')
+                                    ->get();
+    foreach ($vehicles as $vehicle){
+        $registros[] = [
+            'id' => $vehicle->id,
+            'model' => $vehicle->model,
+            'yearmodel' => $vehicle->yearmodel,
+            'yearmanufacture' => $vehicle->yearmanufacture,
+            'brand'=> $vehicle->brand,
+            'color' => $vehicle->color,
+            'price' => $vehicle->price,
+            'photo' => '~/storage/vehicle/'.$vehicle->photo,
+            'optionals' => $vehicle->optionals
+        ];
+    }
+
+
+    return response()->json($registros);
     });
     

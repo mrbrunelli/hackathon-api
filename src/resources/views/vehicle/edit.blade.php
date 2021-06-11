@@ -41,7 +41,7 @@
             </div>
             <div class="col">
                 <label for="price">Preço</label>
-                <input type="text" class="form-control" id="price" name="price" value="{{ $vehicle->price}}" >
+                <input type="text" class="form-control" id="price" name="price" onkeyup="formatarMoeda()" value="{{ $vehicle->price}}" >
             </div>
             <div class="col">
                 <label for="brand_id">Marca</label>
@@ -77,5 +77,27 @@
         </div>
     </div>
 </div>  
+
+@endsection
+
+@section('js')
+<script>
+    function formatarMoeda() {
+        var elemento = document.getElementById('price');
+        var valor = elemento.value;
+
+        valor = valor + '';
+        valor = parseInt(valor.replace(/[\D]+/g, ''));
+        valor = valor + '';
+        valor = valor.replace(/([0-9]{2})$/g, ",$1");
+
+        if (valor.length > 6) {
+            valor = valor.replace(/([0-9]{3}),([0-9]{2}$)/g, ".$1,$2");
+        }
+
+        elemento.value = valor;
+        if(valor == 'NaN') elemento.value = '';
+    }
+</script>
 
 @endsection
