@@ -36,15 +36,15 @@
             </div>
             <div class="col">
                 <label for="yearmanufacture">Ano de Fabricação</label>
-                <input type="text" class="form-control" id="yearmanufacture" name="yearmanufacture" value="{{ old('yearmanufacture')}}" >
+                <input type="text" class="form-control" id="yearmanufacture"required name="yearmanufacture" value="{{ old('yearmanufacture')}}" >
             </div>
             <div class="col">
                 <label for="price">Preço</label>
-                <input type="text" class="form-control" id="price" name="price" onkeyup="formatarMoeda()" value="{{ old('price')}}" >
+                <input type="text" class="form-control" id="price" required name="price" onkeyup="formatarMoeda()" value="{{ old('price')}}" >
             </div>
             <div class="col">
                 <label for="brand_id">Marca</label>
-                <select name="brand_id" id="brand" class="form-control">
+                <select name="brand_id" id="brand" class="form-control" required>
                     @foreach($brands as $brand)
                     <option value="{{$brand->id}}" >{{$brand->description}}</option>
                     @endforeach
@@ -52,7 +52,7 @@
             </div>
             <div class="col">
                 <label for="color_id">Cor</label>
-                <select name="color_id" id="color_id" class="form-control">
+                <select name="color_id" id="color_id" class="form-control" required>
                     @foreach($colors as $color)
                     <option value="{{$color->id}}" >{{$color->description}}</option>
                     @endforeach
@@ -61,11 +61,11 @@
             
             <div class="col">
                 <label for="photo" class="form-label">Foto</label>
-                <input class="form-control" type="file" id="photo" name="photo">
+                <input class="form-control" type="file" id="photo" name="photo"required>
             </div>
             <div class="col">
                 <label for="optionals">Optionais</label>
-                <textarea type="text" class="form-control" id="optionals" name="optionals" rows="5" >{{ old('optionals')}}</textarea>
+                <textarea type="text" class="form-control" id="optionals" name="optionals" rows="5" required>{{ old('optionals')}}</textarea>
             </div>
             <button class="btn btn-tertiary " type="submit">Salvar</button>
             </form>

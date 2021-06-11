@@ -56,12 +56,13 @@ Route::prefix('/sistema')->group(function(){
 
 Route::get('/api',  function(){
 
-    $vehicles = DB::table('vehicle')->join('brand', 'brand_id', '=', 'vehicle.brand_id')
-                                    ->join('color', 'color_id', '=', 'vehicle.color_id')
-                                    ->select('vehicle.*','brand.description as brand','color.description as color')
-                                    ->whereNull('vehicle.deleted_at')
-                                    ->get();
-    foreach ($vehicles as $vehicle){
+
+    $vehicles = DB::table('vehicle')->whereNull('vehicle.deleted_at')->join('color', 'vehicle.color_id', '=', 'color.id')
+    ->join('brand', 'vehicle.brand_id', '=', 'brand.id')
+    ->select('vehicle.id', 'vehicle.photo','vehicle.model','vehicle.yearmodel','vehicle.yearmanufacture','vehicle.price','vehicle.type','vehicle.optionals','brand.description as brand', 'color.description as color')->get();
+
+    foreach($vehicles as $vehicle){
+        
         $registros[] = [
             'id' => $vehicle->id,
             'model' => $vehicle->model,
@@ -73,9 +74,9 @@ Route::get('/api',  function(){
             'photo' => '~/storage/vehicle/'.$vehicle->photo,
             'optionals' => $vehicle->optionals
         ];
+
     }
 
-
-    return response()->json($registros);
+    return $registros;
     });
     

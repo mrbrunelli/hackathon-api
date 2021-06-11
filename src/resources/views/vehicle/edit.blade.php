@@ -37,15 +37,15 @@
             </div>
             <div class="col">
                 <label for="yearmanufacture">Ano de Fabricação</label>
-                <input type="text" class="form-control" id="yearmanufacture" name="yearmanufacture" value="{{ $vehicle->yearmanufacture }}" >
+                <input type="text" class="form-control" id="yearmanufacture" name="yearmanufacture" required value="{{ $vehicle->yearmanufacture }}" >
             </div>
             <div class="col">
                 <label for="price">Preço</label>
-                <input type="text" class="form-control" id="price" name="price" onkeyup="formatarMoeda()" value="{{number_format($vehicle->price,2,',','.')}}" >
+                <input type="text" class="form-control" id="price" name="price" onkeyup="formatarMoeda()"required value="{{number_format($vehicle->price,2,',','.')}}" >
             </div>
             <div class="col">
                 <label for="brand_id">Marca</label>
-                <select name="brand_id" id="brand" class="form-control">
+                <select name="brand_id" id="brand" class="form-control" required>
                     @foreach($brands as $brand)
                     <option value="{{$brand->id}}" {{ ($brand->id == $vehicle->brand_id) ? "selected" : "" }} >{{$brand->description}}</option>
                     @endforeach
@@ -53,7 +53,7 @@
             </div>
             <div class="col">
                 <label for="color_id">Cor</label>
-                <select name="color_id" id="color_id" class="form-control">
+                <select name="color_id" id="color_id" class="form-control" required>
                     @foreach($colors as $color)
                     <option value="{{$color->id}}" {{ ($color->id == $vehicle->color_id) ? "selected" : "" }} >{{$color->description}}</option>
                     @endforeach
@@ -62,14 +62,14 @@
             
             <div class="col">
                 <label for="photo" class="form-label">Foto</label>
-                <input class="form-control" type="file" id="photo" name="photo">
+                <input class="form-control" type="file" id="photo" name="photo" required>
             </div>
             @if(isset($vehicle->photo))
                 <img src="{{url('storage/vehicles/'.$vehicle->photo)}}" width="200">
             @endif
             <div class="col">
                 <label for="optionals">Optionais</label>
-                <textarea type="text" class="form-control" id="optionals" name="optionals" rows="5" >{{ $vehicle->optionals }}</textarea>
+                <textarea type="text" class="form-control" id="optionals" name="optionals" rows="5" required>{{ $vehicle->optionals }}</textarea>
             </div>
             <button class="btn btn-tertiary " type="submit">Salvar</button>
             </form>

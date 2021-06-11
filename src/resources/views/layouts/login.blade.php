@@ -53,7 +53,7 @@
 
 					@csrf
 					<span class="login100-form-title p-b-43">
-						Administrador
+						Painel Administrativo
 					</span>
 
 					<div class="wrap-input100 rs1 validate-input" data-validate = "E-mail obrigatório">
