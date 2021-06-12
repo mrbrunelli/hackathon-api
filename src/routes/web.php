@@ -71,7 +71,7 @@ Route::get('/api',  function(){
             'brand'=> $vehicle->brand,
             'color' => $vehicle->color,
             'price' => $vehicle->price,
-            'photo' => '~/storage/vehicle/'.$vehicle->photo,
+            'photo' => '~/storage/vehicles/'.$vehicle->photo,
             'optionals' => $vehicle->optionals
         ];
 
