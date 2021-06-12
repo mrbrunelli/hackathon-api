@@ -56,38 +56,38 @@
                                         <a class="btn btn-icon-only d-inline-flex align-items-center" href="{{ route('vehicles.edit', $vehicle->id) }}">
                                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 35 35" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
                                         </a>
-                                        <a class="btn btn-icon-only d-inline-flex align-items-center" data-bs-toggle="modal" data-bs-target="#modalNotification" >
+                                        <a class="btn btn-icon-only d-inline-flex align-items-center" data-bs-toggle="modal" data-bs-target="#modalNotification{{$vehicle->id}}" >
                                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 35 35" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
                                         </a>
                                     </div>
                                     </td>
                                 </tr>
-<div class="modal fade" id="modalNotification" tabindex="-1" role="dialog" aria-labelledby="modalTitleNotify" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <p class="modal-title" id="modalTitleNotify">Exclusão de registro</p>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="py-3 text-center">
-                    <svg class="icon icon-xl text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
-                    <h2 class="h4 modal-title my-3">Atenção!</h2>
-                    <p>Você confirma a exclusão deste veículo ?</p>
-                </div>
-            </div>
-            <div class="modal-footer">
-            <form action="{{ route('vehicles.destroy', $vehicle->id)}}" method="POST">
-                @csrf
-                @method('delete')
-                <button class="btn btn-sm btn-primary" type="submit">Sim</button>
-            </form>
-                <button type="button" class="btn btn-link text-gray ms-auto" data-bs-dismiss="modal">Cancelar</button>
-            </div>
-            </div>
-        </div>
-    </div>
-</div>
+                                <div class="modal fade" id="modalNotification{{$vehicle->id}}" tabindex="-1" role="dialog" aria-labelledby="modalTitleNotify" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <p class="modal-title" id="modalTitleNotify">Exclusão de registro</p>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="py-3 text-center">
+                                                    <svg class="icon icon-xl text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+                                                    <h2 class="h4 modal-title my-3">Atenção!</h2>
+                                                    <p>Você confirma a exclusão deste veículo ?</p>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                            <form action="{{ route('vehicles.destroy', $vehicle->id)}}" method="POST">
+                                                @csrf
+                                                @method('delete')
+                                                <button class="btn btn-sm btn-primary" type="submit">Sim</button>
+                                            </form>
+                                                <button type="button" class="btn btn-link text-gray ms-auto" data-bs-dismiss="modal">Cancelar</button>
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 @empty
                                 <tr>
                                     <th class="text-gray-900" scope="row" >
