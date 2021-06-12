@@ -54,7 +54,7 @@ Route::prefix('/sistema')->group(function(){
     });
 });
 
-Route::get('/api',  function(){
+Route::get('/api/vehicle',  function(){
 
 
     $vehicles = DB::table('vehicle')->whereNull('vehicle.deleted_at')->join('color', 'vehicle.color_id', '=', 'color.id')
@@ -100,7 +100,7 @@ Route::get('/api/vehicle/{id}', function($id){
     }
 });
 
-Route::get('/api/new',  function(){
+Route::get('/api/vehicle/new',  function(){
 
 
     $vehicles = Vehicle::whereNull('vehicle.deleted_at')
@@ -131,7 +131,7 @@ Route::get('/api/new',  function(){
     }
     return $registros;
 });
-Route::get('/api/used',  function(){
+Route::get('/api/vehicle/used',  function(){
 
 
     $vehicles = Vehicle::whereNull('vehicle.deleted_at')
