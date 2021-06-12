@@ -138,11 +138,12 @@
           </span>
         </a>
       </li>
+      <li role="separator" class="dropdown-divider mt-4 mb-3 border-gray-700"></li>
       <li class="nav-item">
         <a href="{{route('logout')}}" class="nav-link d-flex justify-content-between">
           <span>
             <span class="sidebar-icon">
-            <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M2 5a2 2 0 012-2h8a2 2 0 012 2v10a2 2 0 002 2H4a2 2 0 01-2-2V5zm3 1h6v4H5V6zm6 6H5v2h6v-2z" clip-rule="evenodd"></path><path d="M15 7h1a2 2 0 012 2v5.5a1.5 1.5 0 01-3 0V7z"></path></svg>
+              <svg class="icon icon-xs me-2" fill="none" stroke="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
             </span>
             <span class="sidebar-text">Logout</span>
           </span>
@@ -197,19 +198,9 @@
 <!-- Smooth scroll -->
 <script src="{{ asset('assets_dash/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js') }}"></script>
 
-<!-- Charts -->
-<script src="{{ asset('assets_dash/vendor/chartist/dist/chartist.min.js') }}"></script>
-<script src="{{ asset('assets_dash/vendor/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js') }}"></script>
-
-<!-- Datepicker -->
-<script src="{{ asset('assets_dash/vendor/vanillajs-datepicker/dist/js/datepicker.min.js') }}"></script>
 
 <!-- Sweet Alerts 2 -->
 <script src="{{ asset('assets_dash/vendor/sweetalert2/dist/sweetalert2.all.min.js') }}"></script>
-
-
-<!-- Vanilla JS Datepicker -->
-<script src="{{ asset('assets_dash/vendor/vanillajs-datepicker/dist/js/datepicker.min.js') }}"></script>
 
 <!-- Notyf -->
 <script src="{{ asset('assets_dash/vendor/notyf/notyf.min.js') }}"></script>

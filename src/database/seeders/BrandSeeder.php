@@ -14,6 +14,7 @@ class BrandSeeder extends Seeder
      */
     public function run()
     {
+
         DB::table('brand')->insert([ 'description' => 'Toyota']);
         DB::table('brand')->insert([ 'description' => 'Volkswagen']);
         DB::table('brand')->insert([ 'description' => 'Ford']);
@@ -25,5 +26,6 @@ class BrandSeeder extends Seeder
         DB::table('brand')->insert([ 'description' => 'Mercedes']);
         DB::table('brand')->insert([ 'description' => 'BMW']);
         DB::table('brand')->insert([ 'description' => 'Fiat']);
+        DB::table('brand')->insert([ 'description' => 'Cherry']);
     }
 }

@@ -20,7 +20,7 @@
             </div>
             <div class="col">
                 <label for="type">Tipo</label>
-                <select name="type" id="type" class="form-control" required>
+                <select name="type" id="type" class="form-control" required onchange="change()">
                     <option  >Selecione o tipo...</option>
                     <option value="new" >Novo</option>
                     <option value="used" >Usado</option>
@@ -78,6 +78,19 @@
 
 @section('js')
 <script>
+function change(){
+    var type = document.getElementById('type');
+    var value_selected = type.options[type.selectedIndex].value;
+    if(value_selected == 'new'){
+        var marca = document.getElementById('brand');
+        for (var i = 0; i < marca.options.length; i++) {
+            if (marca.options[i].text === 'Cherry') {
+                marca.options[i].selected = true;
+                break;
+            }
+        }
+    }
+}
     function formatarMoeda() {
         var elemento = document.getElementById('price');
         var valor = elemento.value;

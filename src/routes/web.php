@@ -76,7 +76,9 @@ Route::get('/api',  function(){
         ];
 
     }
-
+    if(empty($registros)){
+        return "";
+    }
     return $registros;
     });
     
