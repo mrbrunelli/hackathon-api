@@ -99,7 +99,7 @@
           <span class="sidebar-icon">
             
           </span>
-          <span class="mt-1 ms-1 sidebar-text">Volt Overview</span>
+          <span class="mt-1 ms-1 sidebar-text">JacCar Store</span>
         </a>
       </li>
       <li class="nav-item ">
