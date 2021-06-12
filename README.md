@@ -58,3 +58,8 @@ docker container exec -u 1000 laravel php artisan make:seeder NameOfSeed
 ```sh
 docker container exec -u 1000 laravel php artisan migrate:fresh --seed
 ```
+
+### How to access storage link?
+```sh
+docker container exec -u 1000 laravel php artisan storage:link
+```
