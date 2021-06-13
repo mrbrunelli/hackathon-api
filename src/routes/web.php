@@ -83,7 +83,7 @@ Route::get('/api/vehicle',  function(){
     return $registros;
 });
 
-Route::get('/api/vehicle/{id}', function($id){
+Route::get('/api/vehicle/id/{id}', function($id){
 
     $vehicle = Vehicle::whereNull('vehicle.deleted_at')
                                     ->join('color', 'vehicle.color_id', '=', 'color.id')
@@ -101,7 +101,6 @@ Route::get('/api/vehicle/{id}', function($id){
 });
 
 Route::get('/api/vehicle/new',  function(){
-
 
     $vehicles = Vehicle::whereNull('vehicle.deleted_at')
     ->join('color', 'vehicle.color_id', '=', 'color.id')
