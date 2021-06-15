@@ -80,6 +80,7 @@ Route::get('/api/vehicle',  function(){
     if(empty($registros)){
         return "";
     }
+    shuffle($registros);
     return $registros;
 });
 
