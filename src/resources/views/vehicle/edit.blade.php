@@ -62,7 +62,7 @@
             
             <div class="col">
                 <label for="photo" class="form-label">Foto</label>
-                <input class="form-control" type="file" id="photo" name="photo" required>
+                <input class="form-control" type="file" id="photo" name="photo" >
             </div>
             @if(isset($vehicle->photo))
                 <img src="{{url('storage/vehicles/'.$vehicle->photo)}}" width="200">
