@@ -19,6 +19,6 @@ class ColorSeeder extends Seeder
         DB::table('color')->insert([ 'description' => 'Cinza']);
         DB::table('color')->insert([ 'description' => 'Preto']);
         DB::table('color')->insert([ 'description' => 'Vermelho']);
-        DB::table('color')->insert([ 'description' => 'Azul']);
+        DB::table('color')->insert([ 'description' => 'Laranja']);
     }
 }

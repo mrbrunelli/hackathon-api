@@ -50,5 +50,41 @@ class VehicleSeeder extends Seeder
             'photo' => 'fiat.jpg',
             'optionals' => 'Combustível : flex, Licenciado, Km rodados : 46.555, Alarme, Desembaçador traseiro, Ar quente, Vidros elétricos'
         ]);
+        DB::table('vehicle')->insert([
+            'model' => 'Sentra 2.0 Sv 16v Flex 4p Automático',
+            'yearmodel' => 2013,
+            'yearmanufacture' => 2013,
+            'brand_id'=> 6,
+            'type' => 'used',
+            'color_id' => 6,
+            'price' => 46390.00,
+            'user_id' => 3,
+            'photo' => 'nissan-sentra.jpg',
+            'optionals' => 'Combustível : flex, Licenciado, Km rodados : 96.836, Alarme, Retrovisores elétricos, Ar quente, Vidros elétricos, Sensor de estacionamento'
+        ]);
+        DB::table('vehicle')->insert([
+            'model' => 'QQ 1.0 Look Flex 5p',
+            'yearmodel' => 2018,
+            'yearmanufacture' => 2018,
+            'brand_id'=> 12,
+            'type' => 'new',
+            'color_id' => 6,
+            'price' => 29990.00,
+            'user_id' => 1,
+            'photo' => 'Cherry.png',
+            'optionals' => 'Combustível : Gasolina e Álcool, Licenciado, Km rodados : 42.000 , Alarme, 5 portas, Transmissão Manual'
+        ]);
+        DB::table('vehicle')->insert([
+            'model' => 'HB20 1.0 Comfort Plus 12v Flex 4p Manual',
+            'yearmodel' => 2019,
+            'yearmanufacture' => 2018,
+            'brand_id'=> 5,
+            'type' => 'used',
+            'color_id' => 4,
+            'price' => 53390.00,
+            'user_id' => 1,
+            'photo' => 'hb20.jpg',
+            'optionals' => 'Combustível: Flex, Licenciado, Km rodados: 41.490, Encosto de Cabeça Traseiro, Computador a bordo, Câmbio Manual'
+        ]);
     }
 }
